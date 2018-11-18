@@ -5,10 +5,7 @@ import "./index.css"
 import registerServiceWorker from "./registerServiceWorker"
 
 import { Provider } from "react-redux"
-import { createCoreAppStore } from "./sitka"
-import { Store } from "redux"
-
-const store: Store = createCoreAppStore()
+import { store } from "./sitka/index"
 
 ReactDOM.render(
     <Provider store={store}>

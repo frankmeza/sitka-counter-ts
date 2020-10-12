@@ -1,8 +1,10 @@
 import { Sitka } from "olio-sitka";
-import CounterModule from "./counter";
 import { Store } from "redux";
 
-export type CounterState = number;
+import {
+    CounterModule,
+    CounterState,
+} from "./counter";
 
 export interface AppModules {
     readonly counter: CounterModule;

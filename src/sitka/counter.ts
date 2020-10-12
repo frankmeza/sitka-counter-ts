@@ -1,20 +1,22 @@
 import { SitkaModule } from "olio-sitka";
 import { put, select } from "redux-saga/effects";
-import { AppModules, AppState, CounterState } from "./index";
+import { AppModules, AppState } from "./index";
 
-export default class CounterModule extends SitkaModule<
+export type CounterState = number;
+
+export class CounterModule extends SitkaModule<
     CounterState,
     AppModules
 > {
     public moduleName: string = "counter";
     public defaultState = 0;
 
-    public *handleIncrement (): {} {
+    public *handleIncrement (/* event */): {} {
         const counter: CounterState = yield select(this.getCounter);
         yield put(this.setState(counter + 1));
     }
 
-    public *handleDecrement (): {} {
+    public *handleDecrement (/* event */): {} {
         const counter: CounterState = yield select(this.getCounter);
         yield put(this.setState(counter - 1));
     }

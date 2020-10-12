@@ -4,7 +4,7 @@ import logo from "./logo.svg";
 
 import { connect } from "react-redux";
 import { AppState, AppModules } from "./sitka";
-import CounterModule from "./sitka/counter";
+import { CounterModule } from "./sitka/counter";
 
 interface AppProps {
     readonly counterModule: CounterModule;
@@ -13,9 +13,9 @@ interface AppProps {
 
 const App = (props: AppProps) => {
     const { counterModule, sitkaState } = props;
+    const { counter } = sitkaState;
 
     const { handleDecrement, handleIncrement } = counterModule;
-    const { counter } = sitkaState;
 
     return (
         <div className="App">

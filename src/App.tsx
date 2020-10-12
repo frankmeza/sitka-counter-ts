@@ -15,7 +15,7 @@ const App = (props: AppProps) => {
     const { counterModule, sitkaState } = props;
 
     const { handleDecrement, handleIncrement } = counterModule;
-    const { counter } = sitkaState.counter;
+    const { counter } = sitkaState;
 
     return (
         <div className="App">

@@ -4,10 +4,7 @@ import { AppModules, AppState } from "./index";
 
 export type CounterState = number;
 
-export class CounterModule extends SitkaModule<
-    CounterState,
-    AppModules
-> {
+export class CounterModule extends SitkaModule<CounterState, AppModules> {
     public moduleName: string = "counter";
     public defaultState = 0;
 

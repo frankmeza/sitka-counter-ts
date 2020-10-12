@@ -3,8 +3,8 @@ import "./App.css";
 import logo from "./logo.svg";
 
 import { connect } from "react-redux";
-import { AppState, AppModules } from "./sitka";
-import { CounterModule } from "./sitka/counter";
+import { AppState, AppModules } from "./modules";
+import { CounterModule } from "./modules/counter";
 
 interface AppProps {
     readonly counterModule: CounterModule;

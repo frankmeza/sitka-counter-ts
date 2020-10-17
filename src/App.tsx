@@ -21,10 +21,10 @@ type AppProps = {
 };
 
 const DONATION_AMOUNT = "DONATION AMOUNT: ";
-const TIP_AMOUNT = "TIP AMOUNT: ";
 const FORM_HEADER = "Donation and Tip Form, and Summary";
 const NO_DONATION = "NO DONATION";
 const SUBMIT = "submit donation";
+const TIP_AMOUNT = "TIP AMOUNT: ";
 
 const App = (props: AppProps) => {
     const {

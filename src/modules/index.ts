@@ -18,7 +18,7 @@ export interface AppState {
     readonly __sitka__: Sitka<AppModules>;
 }
 
-const sitka = new Sitka<AppModules>();
+const sitka = new Sitka<AppModules>({ log: true });
 sitka.register([new CounterModule(), new DonationModule(), new TipModule()]);
 
 export const store = <Store>sitka.createStore();

@@ -1,11 +1,11 @@
 import { SitkaModule } from "olio-sitka";
-import { put, select } from "redux-saga/effects";
-import { AppModules, AppState } from "./index";
+import { put } from "redux-saga/effects";
+import { AppModules } from "./index";
 
 type TipType = "custom" | "percentage" | "fixed";
 
 export type TipState = {
-    readonly type: TipType;
+    readonly tipType: TipType;
     readonly amount: number;
 };
 
@@ -13,20 +13,15 @@ export class TipModule extends SitkaModule<TipState, AppModules> {
     public moduleName: string = "tip";
 
     public defaultState: TipState = {
-        type: "percentage",
         amount: 0,
+        tipType: "fixed",
     };
 
     public *handleSubmit (value: number): {} {
         alert(`you choose : ${value}`);
     }
 
-    public *handleSetTipAmount (amount: number): {} {
-        const currentTip: TipState = yield select(this.getTip);
-        yield put(this.setState({ ...currentTip, amount }));
-    }
-
-    private getTip (state: AppState): TipState {
-        return state.tip;
+    public *handleSetTip (tipObject: TipState): {} {
+        yield put(this.setState(tipObject));
     }
 }

@@ -1,21 +1,23 @@
 import * as React from "react";
-import "./App.css";
+import "./styles/App.css";
 import logo from "./logo.svg";
 
 import { connect } from "react-redux";
 import { AppState, AppModules } from "./modules";
 import { CounterModule } from "./modules/counter";
 import { DonationModule } from "./modules/donation";
+import { TipModule } from "./modules/tip";
 
 import DonationField from "./components/donation";
 import TipField from "./components/tip";
 
-import { generatePercentageTipOptions } from "./constants";
+import { generatePercentageTipOptions } from "./utils";
 
 type AppProps = {
     readonly sitkaState: AppState;
     readonly counterModule: CounterModule;
     readonly donationModule: DonationModule;
+    readonly tipModule: TipModule;
 };
 
 const DONATION_AMOUNT = "DONATION AMOUNT: ";
@@ -31,40 +33,36 @@ const App = (props: AppProps) => {
 
         // sitka modules
         donationModule: { handleSetDonation },
+        tipModule: { handleSetTip },
     } = props;
 
-    const subHeaderTextDonation =
+    const donationText =
         donation ? `${DONATION_AMOUNT} ${donation}` :
         `${NO_DONATION}`;
 
-    const subHeaderTextTip =
+    const tipText =
         donation ? `${TIP_AMOUNT} ${tip.amount}` :
         "";
 
-    const subHeaderTextTotal = donation + tip.amount;
+    const totalText = donation + tip.amount;
     const tipOptions = generatePercentageTipOptions(donation);
-
-    const setDonation = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { target } = event;
-        handleSetDonation(Number(target.value));
-    };
 
     return (
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <h1 className="App-title">{FORM_HEADER}</h1>
-                <h3>{subHeaderTextDonation}</h3>
-                <h3>{subHeaderTextTip}</h3>
-                <h3>{subHeaderTextTotal}</h3>
+                <h3>{donationText}</h3>
+                <h3>{tipText}</h3>
+                <h3>{totalText}</h3>
             </header>
 
             <DonationField
                 donationAmount={donation}
-                setDonation={setDonation}
+                handleSetDonation={handleSetDonation}
             />
 
-            <TipField options={tipOptions} />
+            <TipField options={tipOptions} handleSetTip={handleSetTip} />
 
             <button type="submit" name="submitButton">
                 {SUBMIT}
@@ -80,5 +78,6 @@ export default connect((state: AppState) => {
         sitkaState: state,
         counterModule: modules.counter,
         donationModule: modules.donation,
+        tipModule: modules.tip,
     };
 })(App);

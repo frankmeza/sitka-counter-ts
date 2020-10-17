@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../donation.css";
+import "../styles/donation.css";
 
 type DonationFieldProps = {
     readonly donationAmount: number;

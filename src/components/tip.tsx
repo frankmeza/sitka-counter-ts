@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TipOption } from "src/constants";
-import "../tip.css";
+import "../styles/tip.css";
 // import { TipState } from "src/modules/tip";
 
 type TipFieldProps = {
